@@ -53,7 +53,7 @@ let database = {
             description: "Organic fresh bananas (1 bunch)",
             price: 2.99,
             category: "groceries",
-            image_url: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=200&h=200&fit=crop&crop=center",
+            image_url: "https://via.placeholder.com/200x200/FFD700/000000?text=🍌+Bananas",
             stock_quantity: 50,
             created_at: "2025-07-20T05:44:09.510Z",
             updated_at: "2025-07-20T05:44:09.510Z"
@@ -64,7 +64,7 @@ let database = {
             description: "Fresh whole milk (1 gallon)",
             price: 3.49,
             category: "groceries",
-            image_url: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&h=200&fit=crop&crop=center",
+            image_url: "https://via.placeholder.com/200x200/F0F8FF/000000?text=🥛+Milk",
             stock_quantity: 30,
             created_at: "2025-07-20T05:44:09.510Z",
             updated_at: "2025-07-20T05:44:09.510Z"
@@ -75,7 +75,7 @@ let database = {
             description: "Comfortable cotton t-shirt",
             price: 19.99,
             category: "clothes",
-            image_url: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200&h=200&fit=crop&crop=center",
+            image_url: "https://via.placeholder.com/200x200/87CEEB/000000?text=👕+T-Shirt",
             stock_quantity: 25,
             created_at: "2025-07-20T05:44:09.510Z",
             updated_at: "2025-07-20T05:44:09.510Z"
@@ -86,7 +86,7 @@ let database = {
             description: "Classic blue denim jeans",
             price: 49.99,
             category: "clothes",
-            image_url: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=200&h=200&fit=crop&crop=center",
+            image_url: "https://via.placeholder.com/200x200/4169E1/FFFFFF?text=👖+Jeans",
             stock_quantity: 15,
             created_at: "2025-07-20T05:44:09.510Z",
             updated_at: "2025-07-20T05:44:09.510Z"
@@ -97,7 +97,7 @@ let database = {
             description: "Complete guide to modern JavaScript",
             price: 29.99,
             category: "books",
-            image_url: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=200&h=200&fit=crop&crop=center",
+            image_url: "https://via.placeholder.com/200x200/F0E68C/000000?text=📚+JS+Book",
             stock_quantity: 20,
             created_at: "2025-07-20T05:44:09.510Z",
             updated_at: "2025-07-20T05:44:09.510Z"
@@ -108,7 +108,7 @@ let database = {
             description: "100 delicious family recipes",
             price: 24.99,
             category: "books",
-            image_url: "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=200&h=200&fit=crop&crop=center",
+            image_url: "https://via.placeholder.com/200x200/FFA07A/000000?text=📖+Recipes",
             stock_quantity: 12,
             created_at: "2025-07-20T05:44:09.510Z",
             updated_at: "2025-07-20T05:44:09.510Z"
@@ -119,7 +119,7 @@ let database = {
             description: "Healthy brown bread",
             price: 5,
             category: "groceries",
-            image_url: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&h=200&fit=crop&crop=center",
+            image_url: "https://via.placeholder.com/200x200/8B4513/FFFFFF?text=🍞+Brown+Bread",
             stock_quantity: 50,
             created_at: "2025-07-20T05:47:36.752Z",
             updated_at: "2025-07-20T05:49:27.171Z"

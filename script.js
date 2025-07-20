@@ -48,6 +48,8 @@ async function loadProductsFromDatabase() {
         const response = await fetch('/api/products');
         const allProducts = await response.json();
         
+        console.log('Loaded products from API:', allProducts);
+        
         // Organize products by category
         products = {
             groceries: [],
@@ -62,6 +64,7 @@ async function loadProductsFromDatabase() {
                     product.icon = categoryIcons[product.category][product.name] || 
                                   categoryIcons[product.category]['default'];
                 }
+                console.log(`Product: ${product.name}, Image URL: ${product.image_url}, Icon: ${product.icon}`);
                 products[product.category].push(product);
             }
         });
@@ -117,13 +120,22 @@ function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
     
+    // Get icon for the product
+    const productIcon = product.icon || 
+                       categoryIcons[product.category][product.name] || 
+                       categoryIcons[product.category]['default'] || '📦';
+    
     // Determine what to show in product image area
     let imageContent;
-    if (product.image_url && product.image_url !== null) {
-        imageContent = `<img src="${product.image_url}" alt="${product.name}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                       <span style="display: none; font-size: 4rem;">${product.icon}</span>`;
+    if (product.image_url && product.image_url !== null && product.image_url !== '') {
+        imageContent = `<img src="${product.image_url}" 
+                            alt="${product.name}" 
+                            style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;" 
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                            onload="console.log('Image loaded: ${product.name}');">
+                       <span style="display: none; font-size: 4rem;">${productIcon}</span>`;
     } else {
-        imageContent = `<span style="font-size: 4rem;">${product.icon}</span>`;
+        imageContent = `<span style="font-size: 4rem;">${productIcon}</span>`;
     }
     
     card.innerHTML = `
