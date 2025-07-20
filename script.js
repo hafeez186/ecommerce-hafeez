@@ -117,9 +117,18 @@ function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
     
+    // Determine what to show in product image area
+    let imageContent;
+    if (product.image_url && product.image_url !== null) {
+        imageContent = `<img src="${product.image_url}" alt="${product.name}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                       <span style="display: none; font-size: 4rem;">${product.icon}</span>`;
+    } else {
+        imageContent = `<span style="font-size: 4rem;">${product.icon}</span>`;
+    }
+    
     card.innerHTML = `
         <div class="product-image">
-            <span style="font-size: 4rem;">${product.icon}</span>
+            ${imageContent}
         </div>
         <div class="product-info">
             <h3>${product.name}</h3>
