@@ -1,187 +1,95 @@
-// Product Data
-const products = {
-    groceries: [
-        {
-            id: 1,
-            name: "Fresh Bananas",
-            price: 2.99,
-            description: "Organic fresh bananas (1 bunch)",
-            icon: "🍌"
-        },
-        {
-            id: 2,
-            name: "Whole Milk",
-            price: 3.49,
-            description: "Fresh whole milk (1 gallon)",
-            icon: "🥛"
-        },
-        {
-            id: 3,
-            name: "Brown Bread",
-            price: 2.29,
-            description: "Whole grain brown bread loaf",
-            icon: "🍞"
-        },
-        {
-            id: 4,
-            name: "Fresh Tomatoes",
-            price: 4.99,
-            description: "Organic red tomatoes (2 lbs)",
-            icon: "🍅"
-        },
-        {
-            id: 5,
-            name: "Free Range Eggs",
-            price: 5.99,
-            description: "Farm fresh eggs (12 count)",
-            icon: "🥚"
-        },
-        {
-            id: 6,
-            name: "Chicken Breast",
-            price: 8.99,
-            description: "Fresh chicken breast (2 lbs)",
-            icon: "🍗"
-        },
-        {
-            id: 7,
-            name: "Greek Yogurt",
-            price: 4.49,
-            description: "Plain Greek yogurt (32 oz)",
-            icon: "🥛"
-        },
-        {
-            id: 8,
-            name: "Olive Oil",
-            price: 12.99,
-            description: "Extra virgin olive oil (500ml)",
-            icon: "🫒"
-        }
-    ],
-    clothes: [
-        {
-            id: 101,
-            name: "Cotton T-Shirt",
-            price: 19.99,
-            description: "Comfortable cotton t-shirt (Multiple colors)",
-            icon: "👕"
-        },
-        {
-            id: 102,
-            name: "Denim Jeans",
-            price: 49.99,
-            description: "Classic blue denim jeans (All sizes)",
-            icon: "👖"
-        },
-        {
-            id: 103,
-            name: "Summer Dress",
-            price: 39.99,
-            description: "Flowy summer dress (Various patterns)",
-            icon: "👗"
-        },
-        {
-            id: 104,
-            name: "Sneakers",
-            price: 79.99,
-            description: "Comfortable running sneakers",
-            icon: "👟"
-        },
-        {
-            id: 105,
-            name: "Hoodie",
-            price: 34.99,
-            description: "Warm fleece hoodie (Unisex)",
-            icon: "🧥"
-        },
-        {
-            id: 106,
-            name: "Formal Shirt",
-            price: 29.99,
-            description: "Professional formal shirt",
-            icon: "👔"
-        },
-        {
-            id: 107,
-            name: "Leather Jacket",
-            price: 129.99,
-            description: "Premium leather jacket",
-            icon: "🧥"
-        },
-        {
-            id: 108,
-            name: "Sports Shorts",
-            price: 24.99,
-            description: "Athletic shorts for sports",
-            icon: "🩳"
-        }
-    ],
-    books: [
-        {
-            id: 201,
-            name: "JavaScript Guide",
-            price: 29.99,
-            description: "Complete guide to modern JavaScript",
-            icon: "📚"
-        },
-        {
-            id: 202,
-            name: "Cooking Recipes",
-            price: 24.99,
-            description: "100 delicious family recipes",
-            icon: "📖"
-        },
-        {
-            id: 203,
-            name: "Mystery Novel",
-            price: 16.99,
-            description: "Thrilling mystery adventure",
-            icon: "📕"
-        },
-        {
-            id: 204,
-            name: "Science Encyclopedia",
-            price: 39.99,
-            description: "Complete science reference book",
-            icon: "📘"
-        },
-        {
-            id: 205,
-            name: "Art History",
-            price: 34.99,
-            description: "Journey through art history",
-            icon: "📙"
-        },
-        {
-            id: 206,
-            name: "Self-Help Guide",
-            price: 22.99,
-            description: "Personal development and growth",
-            icon: "📗"
-        },
-        {
-            id: 207,
-            name: "Children's Stories",
-            price: 18.99,
-            description: "Collection of bedtime stories",
-            icon: "📚"
-        },
-        {
-            id: 208,
-            name: "Biography Collection",
-            price: 27.99,
-            description: "Famous personalities biographies",
-            icon: "📖"
-        }
-    ]
+// Product Data - Now loaded from database
+let products = {
+    groceries: [],
+    clothes: [],
+    books: []
 };
+
+// Default icons for categories
+const categoryIcons = {
+    groceries: {
+        'Fresh Bananas': '�',
+        'Whole Milk': '🥛',
+        'Brown Bread': '🍞',
+        'Fresh Tomatoes': '🍅',
+        'Free Range Eggs': '🥚',
+        'Chicken Breast': '🍗',
+        'Greek Yogurt': '🥛',
+        'Olive Oil': '🫒',
+        'default': '�'
+    },
+    clothes: {
+        'Cotton T-Shirt': '👕',
+        'Denim Jeans': '👖',
+        'Summer Dress': '👗',
+        'Sneakers': '�',
+        'Hoodie': '🧥',
+        'Formal Shirt': '👔',
+        'Leather Jacket': '🧥',
+        'Sports Shorts': '🩳',
+        'default': '�'
+    },
+    books: {
+        'JavaScript Guide': '📚',
+        'Cooking Recipes': '📖',
+        'Mystery Novel': '📕',
+        'Science Encyclopedia': '📘',
+        'Art History': '�',
+        'Self-Help Guide': '📗',
+        'Children\'s Stories': '📚',
+        'Biography Collection': '📖',
+        'default': '�'
+    }
+};
+
+// Load products from database
+async function loadProductsFromDatabase() {
+    try {
+        const response = await fetch('/api/products');
+        const allProducts = await response.json();
+        
+        // Organize products by category
+        products = {
+            groceries: [],
+            clothes: [],
+            books: []
+        };
+        
+        allProducts.forEach(product => {
+            if (products[product.category]) {
+                // Add icon if not present
+                if (!product.icon) {
+                    product.icon = categoryIcons[product.category][product.name] || 
+                                  categoryIcons[product.category]['default'];
+                }
+                products[product.category].push(product);
+            }
+        });
+        
+        return true;
+    } catch (error) {
+        console.error('Failed to load products:', error);
+        return false;
+    }
+}
 
 // Shopping Cart
 let cart = [];
 
 // Initialize the website
-document.addEventListener('DOMContentLoaded', function() {
-    loadProducts();
+document.addEventListener('DOMContentLoaded', async function() {
+    // Load products from database
+    const productsLoaded = await loadProductsFromDatabase();
+    
+    if (productsLoaded) {
+        loadProducts();
+    } else {
+        // Fallback to show loading error
+        document.querySelectorAll('.products-grid').forEach(grid => {
+            grid.innerHTML = '<p style="text-align: center; color: #e74c3c; grid-column: 1/-1;">Failed to load products. Please check your internet connection.</p>';
+        });
+    }
+    
     setupEventListeners();
     updateCartDisplay();
 });
@@ -315,16 +223,69 @@ function checkout() {
         return;
     }
     
+    // Get customer information
+    const customerName = prompt('Please enter your full name:');
+    if (!customerName) return;
+    
+    const customerEmail = prompt('Please enter your email address:');
+    if (!customerEmail) return;
+    
+    const customerPhone = prompt('Please enter your phone number:');
+    if (!customerPhone) return;
+    
+    const customerAddress = prompt('Please enter your delivery address:');
+    if (!customerAddress) return;
+    
+    // Prepare order data
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const itemsList = cart.map(item => `${item.name} (${item.quantity}x)`).join('\n');
+    const orderData = {
+        customer_info: {
+            name: customerName,
+            email: customerEmail,
+            phone: customerPhone,
+            address: customerAddress
+        },
+        items: cart.map(item => ({
+            product_id: item.id,
+            quantity: item.quantity,
+            price: item.price
+        })),
+        total_amount: total
+    };
     
-    const message = `Thank you for your order!\n\nItems:\n${itemsList}\n\nTotal: $${total.toFixed(2)}\n\nYour order will be processed shortly.`;
-    alert(message);
-    
-    // Clear cart
-    cart = [];
-    updateCartDisplay();
-    toggleCart();
+    // Submit order to backend
+    submitOrder(orderData);
+}
+
+async function submitOrder(orderData) {
+    try {
+        const response = await fetch('/api/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            const itemsList = cart.map(item => `${item.name} (${item.quantity}x)`).join('\n');
+            const message = `Thank you for your order!\n\nOrder ID: #${result.order_id}\n\nItems:\n${itemsList}\n\nTotal: $${orderData.total_amount.toFixed(2)}\n\nYour order will be processed shortly.\nYou will receive a confirmation email at ${orderData.customer_info.email}`;
+            
+            alert(message);
+            
+            // Clear cart
+            cart = [];
+            updateCartDisplay();
+            toggleCart();
+        } else {
+            alert('Error placing order: ' + result.error);
+        }
+    } catch (error) {
+        console.error('Order submission failed:', error);
+        alert('Failed to place order. Please try again or contact support.');
+    }
 }
 
 // Utility Functions
@@ -433,6 +394,12 @@ function searchProducts(searchTerm) {
             grid.innerHTML = '<p style="text-align: center; color: #666; grid-column: 1/-1;">No products found in this category.</p>';
         }
     }
+}
+
+// Refresh products (for admin updates)
+async function refreshProducts() {
+    await loadProductsFromDatabase();
+    loadProducts();
 }
 
 // Smooth navigation

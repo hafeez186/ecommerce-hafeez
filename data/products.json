@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "name": "Fresh Bananas",
+    "description": "Organic fresh bananas (1 bunch)",
+    "price": 2.99,
+    "category": "groceries",
+    "image_url": null,
+    "stock_quantity": 50,
+    "created_at": "2025-07-20T05:44:09.510Z",
+    "updated_at": "2025-07-20T05:44:09.510Z"
+  },
+  {
+    "id": 2,
+    "name": "Whole Milk",
+    "description": "Fresh whole milk (1 gallon)",
+    "price": 3.49,
+    "category": "groceries",
+    "image_url": null,
+    "stock_quantity": 30,
+    "created_at": "2025-07-20T05:44:09.510Z",
+    "updated_at": "2025-07-20T05:44:09.510Z"
+  },
+  {
+    "id": 3,
+    "name": "Cotton T-Shirt",
+    "description": "Comfortable cotton t-shirt",
+    "price": 19.99,
+    "category": "clothes",
+    "image_url": null,
+    "stock_quantity": 25,
+    "created_at": "2025-07-20T05:44:09.510Z",
+    "updated_at": "2025-07-20T05:44:09.510Z"
+  },
+  {
+    "id": 4,
+    "name": "Denim Jeans",
+    "description": "Classic blue denim jeans",
+    "price": 49.99,
+    "category": "clothes",
+    "image_url": null,
+    "stock_quantity": 15,
+    "created_at": "2025-07-20T05:44:09.510Z",
+    "updated_at": "2025-07-20T05:44:09.510Z"
+  },
+  {
+    "id": 5,
+    "name": "JavaScript Guide",
+    "description": "Complete guide to modern JavaScript",
+    "price": 29.99,
+    "category": "books",
+    "image_url": null,
+    "stock_quantity": 20,
+    "created_at": "2025-07-20T05:44:09.510Z",
+    "updated_at": "2025-07-20T05:44:09.510Z"
+  },
+  {
+    "id": 6,
+    "name": "Cooking Recipes",
+    "description": "100 delicious family recipes",
+    "price": 24.99,
+    "category": "books",
+    "image_url": null,
+    "stock_quantity": 12,
+    "created_at": "2025-07-20T05:44:09.510Z",
+    "updated_at": "2025-07-20T05:44:09.510Z"
+  },
+  {
+    "id": 7,
+    "name": "Brown Bread",
+    "description": "Healthy brown bread",
+    "price": 5,
+    "category": "groceries",
+    "image_url": "/uploads/1752990456746-Brown_bread.webp",
+    "stock_quantity": 50,
+    "created_at": "2025-07-20T05:47:36.752Z",
+    "updated_at": "2025-07-20T05:49:27.171Z"
+  }
+]

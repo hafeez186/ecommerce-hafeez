@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "$2a$10$o/Hbu./zZ8qpd0jnocmSxeZPeBfKCvBzPLanQ70aCuW4ZHBnsTR7u",
+    "email": "admin@shopall.com",
+    "created_at": "2025-07-20T05:44:09.490Z"
+  }
+]
